@@ -136,19 +136,22 @@ It is easy to add new custom operators if the need arises, but these are the bui
 - LE - Less or equal than
 
  4. Check if month is april to september, and time is between 10.xx and 21.xx (effectively 10.00:00 and 21.59:59):
-Condition(**months=range(4,10)**, **hours=range(10,22)**)
+
+    Condition(**months=range(4,10)**, **hours=range(10,22)**)
 
  5. Check only if a signal is stable for a certain period (in secods)
-Condition(entity='input_boolean.pool_water_low', operand='on', **stability_time=5**)
+
+    Condition(entity='input_boolean.pool_water_low', operand='on', **stability_time=5**)
 
 All these can be combined in arbitrary combinations to derive complex conditions like:
-Condition(**timeout_entity="input_number.user_timeout"**, **months=range(4,10)**, **hours=range(10,22)**, **stability_time=5**)
+
+    Condition(**timeout_entity="input_number.user_timeout"**, **months=range(4,10)**, **hours=range(10,22)**, **stability_time=5**)
 
 This would (in plain English) mean: Wait the time specified in **"input_number.user_timeout"**, it must be stable for at least **5** seconds, in **april** through **september**, between **10.00:00** and **21.59:59**.
 
 # Known issues
 - If several transition have the same timeout-time, it is arbitrary which first becomes true
-- If a entity change of state makes several transitions to become true, it is arbitrary which is taken
-- There is not protection against bad code, and it relatively easy to create infinite loops and similar. If it happens, kill appdaemon and fix your configuration problem
+- If a entity change of state makes several transitions become true, it is arbitrary which transition is activated
+- There is no protection against bad code, and it relatively easy to create infinite loops and similar. If it happens, kill appdaemon and fix your configuration problem
 
 
