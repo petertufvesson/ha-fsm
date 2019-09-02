@@ -58,7 +58,7 @@ Add a new app in appdaemon (see "Configuring a Test App" https://appdaemon.readt
               Condition(entity='alarm_panel.state', operand='home')
             ])
           ]),
-          State(id='Alarm disarmed', enter_programs=[self.siren_on], transitions=[
+          State(id='Alarm disarmed', enter_programs=[self.siren_off], transitions=[
             Transition(next='Alarm armed', conditions=[
               Condition(entity='alarm_panel.state', operand='away')
             ])
@@ -85,6 +85,9 @@ The entire definition of the machine, including states, transitions and programs
 - states is a required list of; State objects
 - entity is an optional hass entity where the current state is published
 - health_entity is an optional  hass entity where the health of this fsm is made public
+
+  **log_graph_link**()
+Print a link to an external site producing a graphical view of the machine. **Note** if the graph string is large the direct link will not work. Instead, copy/paste the text directly at the external site and it will work
 
 ## State
 **state**(id, name, **transitions**, enter_programs, exit_programs):
