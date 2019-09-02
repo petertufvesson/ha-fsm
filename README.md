@@ -1,18 +1,7 @@
 # Welcome to ha-fsm
 
 Most programmers are used to finate-state-machines to control the behavior of things. (https://en.wikipedia.org/wiki/Finite-state_machine)
-Exmaple:
-```mermaid
-graph LR
-A((Alarm armed))
-B((Alarm disarmed))
-C((Alarm triggered))
-A -- Family member arrives home --> B
-A -- Detector #1 triggered--> C
-A -- Detector #2 triggered--> C
-C -- Alarm acknowledged --> B
-B -- Last person leaving --> A
-```
+
 It is built in python using the appdaemon package. You need to be prepared to write python to use this package, but most of the code can be copy-pasted. So do not be intimidated even if you are not a ninja at programming.
 This package allows you to:
 - Add machines
